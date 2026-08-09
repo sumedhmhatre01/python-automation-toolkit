@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "python-laptop-automation"
+version = "0.1.0"
+description = "A practical Python toolkit for laptop automation and computer control."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {file = "LICENSE"}
+
+dependencies = [
+    "python-dotenv>=1.0,<2.0",
+]
+
+[project.scripts]
+laptop-automation = "laptop_automation.cli.commands:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+
+[tool.black]
+line-length = 88
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
