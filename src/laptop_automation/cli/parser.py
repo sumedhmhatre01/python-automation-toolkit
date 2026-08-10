@@ -6,7 +6,7 @@ def create_parser() -> argparse.ArgumentParser:
 
     parser = argparse.ArgumentParser(
         prog="laptop-automation",
-        description=("Python Laptop Automation Toolkit"),
+        description="Python Laptop Automation Toolkit",
     )
 
     subparsers = parser.add_subparsers(
@@ -29,9 +29,21 @@ def create_parser() -> argparse.ArgumentParser:
         help="Take a screenshot.",
     )
 
-    subparsers.add_parser(
+    organize_parser = subparsers.add_parser(
         "organize-downloads",
-        help="Organize files in the Downloads folder.",
+        help="Organize files in a selected folder.",
+    )
+
+    organize_parser.add_argument(
+        "--source",
+        type=str,
+        help=("Folder to organize. " "Defaults to the Downloads folder."),
+    )
+
+    organize_parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Preview changes without moving files.",
     )
 
     return parser
